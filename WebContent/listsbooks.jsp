@@ -8,7 +8,7 @@
 </head>
 <body>
 	<h3>List Books</h3>
-	<table border="1">
+	<!-- <table border="1">
 		<thread>
 		<tr>
 			<th>Id</th>
@@ -55,7 +55,8 @@
 			</tr>
 		</tbody>
 	</table>
-</body>
+	 -->
+
   <%
     BookDAO bookDAO=new BookDAO();
     List<Book> bookList=bookDAO.listbook();
@@ -65,4 +66,7 @@
   for(Book b:bookList){
   out.println(b.getId()+"-"+b.getName());
   }%>
+  
+  
+  </body>
 </html>

@@ -15,9 +15,9 @@ public class BookDAO {
 		Connection con = ConnectionUtil.getConnection();
 		PreparedStatement pst = con.prepareStatement(sql);
 		pst.setString(1, user.getName());
-		pst.setFloat(2, user.getPrice());
-		pst.setDate(3, Date.valueOf(user.getPublished_date()));
-		pst.setInt(4, user.getAuthor_id());
+		pst.setInt(2, user.getPrice());
+		pst.setDate(3, Date.valueOf(user.getPublishedDate()));
+		pst.setInt(4, user.getAuthorId());
 		int rows = pst.executeUpdate();
 		System.out.println(rows);
 
@@ -30,19 +30,19 @@ public class BookDAO {
 		PreparedStatement pst = con.prepareStatement(sql);
 		List<Book> bookList = new ArrayList<Book>();
 		ResultSet rs = pst.executeQuery();
-		if (rs.next()) {
+		while (rs.next()) {
 
 			int id = rs.getInt("id");
 			String name = rs.getString("name");
-			float price = rs.getFloat("price");
+			int price = rs.getInt("price");
 			int author_id = rs.getInt("author_id");
 			Date published_date = rs.getDate("published_date");
 			Book b = new Book();
 			b.setId(id);
 			b.setName(name);
 			b.setPrice(price);
-			b.setAuthor_id(author_id);
-			b.setPublished_date(published_date.toLocalDate());
+			b.setAuthorId(author_id);
+			b.setPublishedDate(published_date.toLocalDate());
 
 			bookList.add(b);
 		}

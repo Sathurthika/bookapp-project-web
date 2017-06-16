@@ -12,14 +12,14 @@ import util.ConnectionUtil;
 
 public class OrderDAO {
 	public void register(Order user) throws Exception {
-	    String sql = "insert into orders(user_id,book_id,quantity,status,order_date) values (?, ?, ?,? ,? )";
+	    String sql = "insert into orders(user_id,book_id,quantity) values (?, ?, ? )";
 	    Connection con= ConnectionUtil.getConnection();
 	    PreparedStatement pst=con.prepareStatement(sql);
 	    		pst.setInt(1, user.getUserid());
 	        	pst.setInt (2, user.getBookid());
 	    		pst.setInt(3,user.getQuantity());
-                pst.setString(4,user.getStatus());
-	    		pst.setDate(5, Date.valueOf(user.getOrderDate()));
+                //pst.setString(4,user.getStatus());
+	    		//pst.setDate(5, Date.valueOf(user.getOrderDate()));
 	    		
 	      int rows=pst.executeUpdate(); 
 	      System.out.println(rows);

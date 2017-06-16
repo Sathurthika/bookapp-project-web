@@ -1,6 +1,9 @@
-package book_app;
+package Test;
 
 import java.time.LocalDate;
+
+import dao.BookDAO;
+import model.Book;
 
 public class TestBookDAO {	
 	
@@ -9,8 +12,8 @@ public class TestBookDAO {
 	Book user = new Book();
     user.setName("radha");
     user.setPrice(134);
-    user.setAuthor_id(1);
-    user.setPublished_date(LocalDate.now());
+    user.setAuthorId(1);
+    user.setPublishedDate(LocalDate.now());
 
     BookDAO userDAO = new BookDAO();
     userDAO.register(user);
