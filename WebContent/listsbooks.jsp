@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@page import="model.User"%>
 <%@page import="model.Book"%>
 <%@page import="java.util.List"%>
 <%@page import="dao.BookDAO"%>
@@ -7,6 +8,16 @@
 <title>List books</title>
 </head>
 <body>
+
+<%
+
+User   u = (User) session.getAttribute("logged_in_user");
+//out.println(u);
+%>
+
+Welcome <%=u.getName() %> !!!  ( <a href="LogoutServlet"> Logout </a>)
+
+
 	<h3>List Books</h3>
 	<!-- <table border="1">
 		<thread>
@@ -62,10 +73,30 @@
     List<Book> bookList=bookDAO.listbook();
     //out.println("Books:"+bookList);
   %>
+  
+  <table border="1">
+		<thread>
+		<tr>
+			<th>Id</th>
+			<th>Name</th>
+			<th>Price</th>
+			<th>Published Date</th>
+			<th>Author Name</th>
+		</thread>
+		<tbody>
   <%
-  for(Book b:bookList){
-  out.println(b.getId()+"-"+b.getName());
-  }%>
+  for(Book b:bookList){ %>
+	  
+	  <tr>
+		<td><%=b.getId() %></td>
+		<td><%=b.getName() %></td>
+		<td><%=b.getPrice() %></td>
+		<td><%=b.getPublishedDate() %></td>
+		<td><%=b.getAuthorId() %></td>
+	</tr>  
+  <%}%>
+  <a href="orderbooks.jsp">Add Orders</a>
+  <a href="listorders.jsp">List books</a>
   
   
   </body>

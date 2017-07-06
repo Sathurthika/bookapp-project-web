@@ -1,3 +1,4 @@
+<%@page import="model.User"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -7,9 +8,16 @@
 <title>Order Books</title>
 </head>
 <body>
+
+<%
+
+User   u = (User) session.getAttribute("logged_in_user");
+out.println(u);
+%>
+
 <h3>Order Books</h3>
 <form action="OrderBookServlet"> 
-UserId:<input type="number" name="userId" required />
+UserId:<input type="number" name="userId" value="<%=u.getId()%>" required />
 <br/>
 
 Select Book:
