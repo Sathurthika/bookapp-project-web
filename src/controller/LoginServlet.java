@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.UserDAO;
 import model.User;
@@ -41,7 +42,9 @@ public class LoginServlet extends HttpServlet {
 		}
 		else
 		{
-			response.sendRedirect("listsbooks.html");
+			HttpSession session=request.getSession();
+			 session.setAttribute("logged_in_user",user);
+			response.sendRedirect("listsbooks.jsp");
 		}
 	}
 

@@ -6,11 +6,17 @@ public class Order {
 
 
 	
-	public int getId() {
-		return id;
+	public String getUsername() {
+		return username;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	public String getBookname() {
+		return bookname;
+	}
+	public void setBookname(String bookname) {
+		this.bookname = bookname;
 	}
 	public int getUserid() {
 		return userid;
@@ -42,13 +48,22 @@ public class Order {
 	public void setOrderDate(LocalDate orderDate) {
 		this.orderDate = orderDate;
 	}
-	private int id;
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	@Override
 	public String toString() {
-		return "Order [id=" + id + ", userid=" + userid + ", bookid=" + bookid + ", quantity=" + quantity + ", status="
-				+ status + ", orderDate=" + orderDate + "]";
+		return "Order [id=" + id + ", userid=" + userid + ", username=" + username + ", bookname=" + bookname
+				+ ", bookid=" + bookid + ", quantity=" + quantity + ", status=" + status + ", orderDate=" + orderDate
+				+ "]";
 	}
+	private int id;
 	private int userid;
+	private String username;
+	private String bookname;
 	private int bookid;
 	private int quantity;
 	private String status;

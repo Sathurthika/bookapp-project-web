@@ -9,7 +9,10 @@ public class User {
 		return "User [id=" + id + ", name=" + name + ", email=" + email + ", password=" + password + ", joined_Date="
 				+ joined_Date + "]";
 	}
-    private Integer id;
+    public Integer getId() {
+		return id;
+	}
+	private Integer id;
 	private String name;
     private String email;
     private String password;
