@@ -1,3 +1,4 @@
+<%@page import="model.User"%>
 <%@page import="java.util.List"%>
 <%@page import="model.Order"%>
 <%@page import="dao.OrderDAO"%>
@@ -7,15 +8,21 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>List Order</title>
+<title>My Orders</title>
 </head>
 <body>
-<h3>list books</h3>
+<%
+
+User   u = (User) session.getAttribute("logged_in_user");
+out.println(u);
+%>
+
+<h3>my orders </h3>
 <table border="1">
 	<tbody>
 		<%
 			OrderDAO orderDAO = new OrderDAO();
-			List<Order> orderList = orderDAO.listorder();
+			List<Order> orderList = orderDAO.listorder(u.getId());
 		%><table border="1">
 			<thead>
 				<tr>
@@ -39,13 +46,11 @@
 						out.println("<td>" + b.getQuantity() + "</td>");
 						out.println("<td>" + b.getStatus() + "</td>");
 						out.println("<td>" + b.getOrderDate() + "</td>");
-
 						String cancelParameters = "id=" + b.getId() + "&status=CANCELLED";
-						String deliveredParameters = "id=" + b.getId() + "&status=DELIVERED";
+						
 						String cancelLink = "<a href='UpdateOrderServlet?" + cancelParameters +"'>Cancel</a>";
-						String deliveredLink = "<a href='UpdateOrderServlet?" + deliveredParameters +"'>Delivered</a>";
+						
 						out.println("<td>" + cancelLink  +"</td>");
-						out.println("<td>" + deliveredLink  +"</td>");
 						
 						out.println("</tr>");
 					}

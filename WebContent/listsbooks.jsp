@@ -95,8 +95,9 @@ Welcome <%=u.getName() %> !!!  ( <a href="LogoutServlet"> Logout </a>)
 		<td><%=b.getAuthorId() %></td>
 	</tr>  
   <%}%>
-  <a href="orderbooks.jsp">Add Orders</a>
+  <a href="orderbook.jsp">Add Orders</a>
   <a href="listorders.jsp">List books</a>
+    <a href="myorders.jsp">My Orders </a>
   
   
   </body>
